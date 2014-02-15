@@ -11,10 +11,13 @@
 		body {
 			background-color: #6698ff;
 			font-family: 'Lato', sans-serif;
+			text-align: center;
+		}
+		#logo {
+			margin-top: 50px;
 		}
 		#title {
 			color: #ffffff;
-			text-align: center;
 			padding-top: 50px;
 		}
 		#title a {
@@ -28,9 +31,6 @@
 		.btn {
 			margin-top: 15px;
 		}
-		.sign-up {
-			text-align: center;
-		}
 		.sign-up a {
 			color: #dddddd;
 		}
@@ -39,7 +39,6 @@
 			bottom: 0;
 			width: 100%;
 			height: 60px;
-			text-align: center;
 			padding-right: 20px;
 		}
 		#footer-list li {
@@ -53,12 +52,14 @@
 	</style>
 </head>
 <body>
+	<img id="logo" src="images/cloud.png" alt="cloud logo">
 	<h1 id="title"><a href="/pennappss14/">CloudSpread</a></h1>
 
 	<div class="sign-up container">
 		<form class="form-signin" role="form">
 			<input type="username" class="user form-control" placeholder="Username" autofocus>
 			<input type="password" class="pass form-control" placeholder="Password">
+			<div id="alert-placeholder"></div>
 			<input type="button" class="btn btn-lg btn-primary btn-block" onclick="verify()" value="Submit" />
 		</form>
 		<a href="#">Sign up</a>
@@ -83,7 +84,21 @@
 			if ($(".user").val() == "waj" && $(".pass").val() == "pass")
 				window.location = "profile.html";
 			else
-				alert("Incorrect credentials.");
+				myAlert('alert-danger', 'Incorrect credentials.');
+		}
+		$('.user').keypress(function(e) {
+		    if (e.which == '13') {
+		        verify();
+		    }
+		});
+		$('.pass').keypress(function(e) {
+		    if (e.which == '13') {
+		        verify();
+		    }
+		});
+		function myAlert(alertType, message) {
+			$("#alert-placeholder").html('<div class="alert fade in out ' + alertType + '"><a class="close" data-dismiss="alert">x</a><span>' + message + '</span></div>');
+			window.setTimeout(function() { $(".alert").alert('close'); }, 4000);
 		}
 	</script>
 </body>
