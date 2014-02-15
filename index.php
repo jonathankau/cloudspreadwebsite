@@ -15,6 +15,7 @@
 		}
 		#logo {
 			margin-top: 50px;
+		        max-width: 330px;
 		}
 		#title {
 			color: #ffffff;
