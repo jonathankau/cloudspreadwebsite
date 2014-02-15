@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CloudSpread</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+	<style type="text/css">
+		body {
+			font-family: 'Lato', sans-serif;
+		}
+		#title {
+			background-color: #6698ff;
+			color: #ffffff;
+			text-align: center;
+			margin: 0;
+			padding-top: 25px;
+			padding-bottom: 15px;
+		}
+		#title a {
+			color: #ffffff;
+		}
+		#alert-placeholder {
+			max-width: 330px;
+			padding: 10px;
+			margin: 0 auto;
+		}
+		#username {
+			color: #6698ff;
+			text-align: left;
+		}
+		#footer {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			height: 60px;
+			text-align: center;
+			padding-right: 20px;
+		}
+		#footer-list li {
+			display: inline;
+			list-style-type: none;
+			padding-right: 20px;
+		}
+		#footer-list li a {
+			color: #dddddd;
+		}
+		.btn {
+			font-size: 120%;
+			max-width: 300px;
+			margin: 0 auto;
+			margin-bottom: 50px;
+		}
+	</style>
+</head>
+<body>
+	<h1 id="title"><a href="/pennappss14/">CloudSpread</a></h1>
+
+	<div id="alert-placeholder"></div>
+	<div class="container">
+		<h2 id="username">Wajahat Siddiqui</h2>
+		<table class="table table-striped">
+			<tr>
+				<th>App</th><th>Edit</th>
+			</tr>
+		</table>
+		<a class="btn btn-large btn-primary btn-block" href="upload.html">Upload</a>
+	</div>
+
+	<div id="footer">
+		<div class="container">
+			<ul id="footer-list">
+				<li><a href="#">About Us</a></li>
+				<li><a href="#">Privacy</a></li>
+				<li><a href="#">Legal</a></li>
+				<li><a href="#">Careers</a></li>
+				<li><a href="#">Site Map</a></li>
+				<li><a href="#">Help</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="dropzone.min.js"></script>
+	<script src="bootstrap.min.js"></script>
+	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.16.min.js"></script>
+	<script type="text/javascript">
+		Parse.initialize("O8XA4Fw7PvnVxtrbKoal0ssZs0pyc9FssmXOtmIo", "D1h4JJbBQTd4ArTmlOZm9rFQ9sGGFtjSWqn4veEL");	    
+		
+		myAlert('alert-warning', 'Loading...');
+		var Organisation = Parse.Object.extend("Organisation");
+		var query = new Parse.Query(Organisation);
+		query.find({
+			success: function(results) {
+				var arr = [];
+				for (var i = 0; i < results.length; i++) {
+					var name = results[i].get("Name");
+					if (typeof(name) != "undefined" && getExtension(name).toLowerCase() == 'apk' && !isInside(arr, name)) {
+						arr.push(name);
+						$(".table tr:last").after('<tr><td>' + name + '</td><td>' + '</td></tr>');
+					}
+				}
+				myAlert('alert-success', 'All apps loaded.');
+			},
+			error: function(error) {
+				alert("Error\n" + error.message);
+			}
+		});
+
+		function isInside(arr, name) {
+			for (var i = 0; i < arr.length; i++)
+				if (arr[i] == name)
+					return true;
+			return false;
+		}
+
+		function getExtension(filename) {
+			var parts = filename.split('.');
+			return parts[parts.length - 1];
+		}
+		function myAlert(alertType, message) {
+			$("#alert-placeholder").html('<div class="alert ' + alertType + '"><a class="close" data-dismiss="alert">x</a><span>' + message + '</span></div>');
+		}
+	</script>
+</body>
+</html>
