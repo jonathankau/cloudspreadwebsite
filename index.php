@@ -15,11 +15,11 @@
 		}
 		#logo {
 			margin-top: 50px;
-		        max-width: 330px;
+			max-width: 330px;
 		}
 		#title {
 			color: #ffffff;
-			padding-top: 50px;
+			padding-top: 20px;
 		}
 		#title a {
 			color: #ffffff;

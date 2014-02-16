@@ -32,6 +32,9 @@
 			color: #6698ff;
 			text-align: left;
 		}
+		.link {
+			cursor: pointer;
+		}
 		#footer {
 			text-align: center;
 			padding-right: 20px;
@@ -60,7 +63,7 @@
 		<h2 id="username">Wajahat Siddiqui</h2>
 		<table class="table table-striped">
 			<tr>
-				<th>App</th><th>Uploaded</th>
+				<th>App</th><th>Uploaded</th><th style="color: red;">Delete</th>
 			</tr>
 		</table>
 		<a class="btn btn-large btn-primary btn-block" href="upload.html">Upload</a>
@@ -92,11 +95,13 @@
 			success: function(results) {
 				var arr = [];
 				for (var i = 0; i < results.length; i++) {
+					var objectId = results[i].id;
+					//alert(objectId)c
 					var name = results[i].get("Name");
 					var date = results[i].createdAt;
 					if (typeof(name) != "undefined" && getExtension(name).toLowerCase() == 'apk' && !isInside(arr, name)) {
 						arr.push(name);
-						$(".table tr:last").after('<tr><td>' + name + '</td><td>' + date.toDateString() + " " + date.toLocaleTimeString() + '</td></tr>');
+						$(".table tr:last").after('<tr><td>' + name + '</td><td>' + date.toDateString() + " " + date.toLocaleTimeString() + '</td><td><a class="link" onclick="javascript:deleteObject(\'' + objectId + '\');">Delete</a></td></tr>');
 					}
 				}
 				myAlert('alert-success', 'All apps loaded.');
@@ -106,13 +111,26 @@
 			}
 		});
 
+		function deleteObject(id) {
+			var query = new Parse.Query(Organisation);
+			query.get(id, {
+				success: function(myObj) {
+					var name = myObj.get("Name");
+					myObj.destroy({});
+					myAlert('alert-success', name + " successfully deleted.");
+					window.setInterval(function() {location.reload();}, 1000);
+				},
+				error: function(object, error) {
+					myAlert('alert-warning', 'Delete failed.\n' + error.message);
+				}
+			})
+		}
 		function isInside(arr, name) {
 			for (var i = 0; i < arr.length; i++)
 				if (arr[i] == name)
 					return true;
 			return false;
 		}
-
 		function getExtension(filename) {
 			var parts = filename.split('.');
 			return parts[parts.length - 1];
