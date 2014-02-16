@@ -103,6 +103,7 @@
 			var application = new Parse.Object("Organisation");
 	        application.set("Name", file.name);
 	        application.set("apkFile", parseFile);
+	        application.set("filesize", file.size);
 	        application.save({
 	        	success: function(answer) {
 				myAlert("alert-success", "Object Saved!");

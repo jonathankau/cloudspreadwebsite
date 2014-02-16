@@ -63,7 +63,7 @@
 		<h2 id="username">Wajahat Siddiqui</h2>
 		<table class="table table-striped">
 			<tr>
-				<th>App</th><th>Uploaded</th><th style="color: red;">Delete</th>
+				<th>App</th><th>File Size</th><th>Uploaded</th><th style="color: red;">Delete</th>
 			</tr>
 		</table>
 		<a class="btn btn-large btn-primary btn-block" href="upload.html">Upload</a>
@@ -95,12 +95,12 @@
 				var arr = [];
 				for (var i = 0; i < results.length; i++) {
 					var objectId = results[i].id;
-					//alert(objectId)c
 					var name = results[i].get("Name");
+					var size = (results[i].get("filesize") / 1000000).toFixed(2);
 					var date = results[i].createdAt;
 					if (typeof(name) != "undefined" && getExtension(name).toLowerCase() == 'apk' && !isInside(arr, name)) {
 						arr.push(name);
-						$(".table tr:last").after('<tr><td>' + name + '</td><td>' + date.toDateString() + " " + date.toLocaleTimeString() + '</td><td><a class="link" onclick="javascript:deleteObject(\'' + objectId + '\');">Delete</a></td></tr>');
+						$(".table tr:last").after('<tr><td>' + name + '</td><td>' + size + ' MB</td><td>' + date.toDateString() + " " + date.toLocaleTimeString() + '</td><td><a class="link" onclick="javascript:deleteObject(\'' + objectId + '\');">Delete</a></td></tr>');
 					}
 				}
 				myAlert('alert-success', 'All apps loaded.');
