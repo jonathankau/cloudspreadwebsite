@@ -22,6 +22,27 @@
 		}
 		#title a {
 			color: #ffffff;
+			text-decoration: none;
+		}
+		#title a:hover {
+			text-shadow: 0.07em 0.07em #666666;
+			-webkit-transition: all 0.3s;
+			-moz-transition: all 0.3s;
+			-ms-transition: all 0.3s;
+			-o-transition: all 0.3s;
+			transition: all 0.3s;
+		}
+		#title a:link {
+			-webkit-transition: all 0.3s;
+			-moz-transition: all 0.3s;
+			-ms-transition: all 0.3s;
+			-o-transition: all 0.3s;
+			transition: all 0.3s;
+		}
+		#logo {
+			max-width: 60px;
+			padding-bottom: 5px;
+			padding-right: 10px;
 		}
 		#alert-placeholder {
 			max-width: 330px;
@@ -31,6 +52,11 @@
 		#username {
 			color: #6698ff;
 			text-align: left;
+			float: left;
+		}
+		#group-code {
+			float: right;
+			padding-top: 5px;
 		}
 		.link {
 			cursor: pointer;
@@ -56,11 +82,12 @@
 	</style>
 </head>
 <body>
-	<h1 id="title"><a href="index.php">CloudSpread</a></h1>
+	<h1 id="title"><a href="index.php"><img id="logo" src="images/cloud.png" alt="cloud logo">CloudSpread</a></h1>
 
 	<div id="alert-placeholder"></div>
 	<div class="container">
 		<h2 id="username">Wajahat Siddiqui</h2>
+		<h3 id="group-code">Group Code: PennApps</h3>
 		<table class="table table-striped">
 			<tr>
 				<th>App</th><th>File Size</th><th>Uploaded</th><th style="color: red;">Delete</th>
@@ -97,10 +124,11 @@
 					var objectId = results[i].id;
 					var name = results[i].get("Name");
 					var size = (results[i].get("filesize") / 1000000).toFixed(2);
+					var url = results[i].get("apkFile")._url;
 					var date = results[i].createdAt;
 					if (typeof(name) != "undefined" && getExtension(name).toLowerCase() == 'apk' && !isInside(arr, name)) {
 						arr.push(name);
-						$(".table tr:last").after('<tr><td>' + name + '</td><td>' + size + ' MB</td><td>' + date.toDateString() + " " + date.toLocaleTimeString() + '</td><td><a class="link" onclick="javascript:deleteObject(\'' + objectId + '\');">Delete</a></td></tr>');
+						$(".table tr:last").after('<tr><td><a href="' + url + '">' + name + '</a></td><td>' + size + ' MB</td><td>' + date.toDateString() + " " + date.toLocaleTimeString() + '</td><td><a class="link" onclick="javascript:deleteObject(\'' + objectId + '\');">Delete</a></td></tr>');
 					}
 				}
 				myAlert('alert-success', 'All apps loaded.');

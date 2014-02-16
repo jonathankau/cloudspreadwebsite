@@ -30,6 +30,22 @@
 		}
 		#title a {
 			color: #ffffff;
+			text-decoration: none;
+		}
+		#title a:hover {
+			text-shadow: 0.07em 0.07em #6698ff;
+			-webkit-transition: all 0.3s;
+			-moz-transition: all 0.3s;
+			-ms-transition: all 0.3s;
+			-o-transition: all 0.3s;
+			transition: all 0.3s;
+		}
+		#title a:link {
+			-webkit-transition: all 0.3s;
+			-moz-transition: all 0.3s;
+			-ms-transition: all 0.3s;
+			-o-transition: all 0.3s;
+			transition: all 0.3s;
 		}
 		.form-signin {
 			max-width: 330px;
