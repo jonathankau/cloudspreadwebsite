@@ -61,13 +61,13 @@
 			<input type="username" class="user form-control" placeholder="Username" autofocus>
 			<input type="password" class="pass form-control" placeholder="Password">
 			<div id="alert-placeholder"></div>
-			<input type="button" class="btn btn-lg btn-primary btn-block" onclick="verify()" value="Submit" />
+			<input type="button" class="btn btn-lg btn-primary btn-block" onclick="verify()" value="Login" />
 		</form>
-		<a href="#">Sign up</a>
 	</div>
 	<div id="footer">
 		<div class="container">
 			<ul id="footer-list">
+				<li><a href="#">Sign up</a></li>
 				<li><a href="#">About Us</a></li>
 				<li><a href="#">Privacy</a></li>
 				<li><a href="#">Legal</a></li>
