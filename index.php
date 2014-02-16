@@ -71,8 +71,7 @@
 				<li><a href="#">About Us</a></li>
 				<li><a href="#">Privacy</a></li>
 				<li><a href="#">Legal</a></li>
-				<li><a href="#">Careers</a></li>
-				<li><a href="#">Site Map</a></li>
+				<li><a href="https://www.facebook.com/careers">Careers</a></li>
 				<li><a href="#">Help</a></li>
 			</ul>
 		</div>
@@ -83,7 +82,7 @@
 	<script type="text/javascript">
 		function verify() {
 			if ($(".user").val() == "waj" && $(".pass").val() == "pass")
-				window.location = "profile.html";
+				window.location = "profile.html?user=";
 			else
 				myAlert('alert-danger', 'Incorrect credentials.');
 		}
