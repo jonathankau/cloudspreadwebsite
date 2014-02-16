@@ -89,7 +89,7 @@
 	<script type="text/javascript">
 		function verify() {
 			if ($(".user").val() == "waj" && $(".pass").val() == "pass")
-				window.location = "profile.html?user=";
+				window.location = "profile.html";
 			else
 				myAlert('alert-danger', 'Incorrect credentials.');
 		}
