@@ -8,10 +8,17 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 	<style type="text/css">
+		html {
+			height: 100%;
+		}
 		body {
 			background-color: #6698ff;
 			font-family: 'Lato', sans-serif;
 			text-align: center;
+			background: -webkit-linear-gradient(#6698ff, white);
+			background-position: center center;
+			background-repeat: no-repeat;
+			height: 100%;
 		}
 		#logo {
 			margin-top: 50px;
@@ -48,7 +55,7 @@
 			padding-right: 20px;
 		}
 		#footer-list li a {
-			color: #dddddd;
+			color: #aaaaaa;
 		}
 	</style>
 </head>
