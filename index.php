@@ -21,7 +21,7 @@
 			height: 100%;
 		}
 		#logo {
-			margin-top: 50px;
+			margin-top: 200px;
 			max-width: 330px;
 		}
 		#title {
