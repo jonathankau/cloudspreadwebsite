@@ -54,7 +54,7 @@
 </head>
 <body>
 	<img id="logo" src="images/cloud.png" alt="cloud logo">
-	<h1 id="title"><a href="/pennappss14/">CloudSpread</a></h1>
+	<h1 id="title"><a href="index.php">CloudSpread</a></h1>
 
 	<div class="sign-up container">
 		<form class="form-signin" role="form">
