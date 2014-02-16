@@ -87,6 +87,9 @@
 			<input type="button" class="btn btn-lg btn-primary btn-block" onclick="verify()" value="Login" />
 		</form>
 	</div>
+
+	<a href="#"><img src="images/apple.png" alt="Coming Soon" width="129" height="45"></a>
+	<a href="http://files.parse.com/c800b5a1-426e-4142-befb-88f82e05ff99/bb0aedbb-4cb5-465b-a89b-99204260a771-CloudSpread.apk"><img src="images/play.png" alt="Get it on Google Play"></a>
 	<div id="footer">
 		<div class="container">
 			<ul id="footer-list">
